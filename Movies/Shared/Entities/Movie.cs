@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Movies.Shared.Entities
 {
-	public class Movies
+	public class Movie
 	{
-		
-	}
+        public string title { get; set; }
+		public DateTime release_date { get; set; }
+
+    }
 }
