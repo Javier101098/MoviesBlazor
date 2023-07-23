@@ -6,11 +6,11 @@
     <h3 class="text-primary">@transform(name)</h3>
     <h4>@Utilities.transformLowerCase(slogan)</h4>
 </div>
+
 <List />
 
 @code {
     string name = "Cuevana";
     string slogan = "Imagina, Vive, Recuerda";
     string transform(string name) => name.ToUpperInvariant();
-
 }
