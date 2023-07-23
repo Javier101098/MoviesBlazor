@@ -1,0 +1,29 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world a @transform(name) la cual mi edad es de @counter</h1>
+<h2>@Utilities.transformLowerCase(name)</h2>
+<p>Esta es una expresion explicita en c# @(2 * 2)</p>
+
+<button @onclick="increment">
+    Incrementa mi edad
+</button>
+
+<button @onclick=@(() => Console.WriteLine("Hola desde mi casa"))>
+    Este es un boton haciendola referencia a una expresion lambda
+</button>
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+@code {
+
+    string name = "Javier Vite Ramirez";
+    int counter = 0;
+
+    string transform(string name) => name.ToUpper();
+
+    void increment() => counter++;
+
+}
