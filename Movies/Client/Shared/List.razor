@@ -1,0 +1,99 @@
+﻿@*/
+    <button @onclick="increment">
+        Incrementa mi edad
+    </button>
+
+    <button @onclick=@(() => Console.WriteLine("Hola desde mi casa"))>
+        Este es un boton haciendola referencia a una expresion lambda
+    </button>
+*@
+
+<div>
+    <h5>Peliculas</h5>
+    <p>Titulo <b>@bestMovie.title</b> </p>
+    <p>Fecha de lanzamiento: <b>@bestMovie.release_date.ToString("dd MMM yyyy")</b> </p>
+</div>
+
+<hr />
+
+<div>
+    <h5>Peliculas</h5>
+    @if (movies is null)
+    {
+        <p>Cargando las peliculas</p>
+    }
+    else if (movies.Count == 0)
+    {
+        <p>No hay peliculas para mostrar</p>
+    }
+    else
+    {
+        @foreach (Movie movie in movies)
+        {
+            <p>
+                Titulo
+                <b>@movie.title</b>
+                @if (DateTime.Today.Subtract(movie.release_date).Days <= 14)
+                {
+                    <small class="bg-primary text-white">
+                        Nuevo
+                    </small>
+                }
+            </p>
+            <p>Fecha de lanzamiento: <b>@movie.release_date.ToString("dd MMM yyyy")</b> </p>
+        }
+    }
+
+</div>
+
+<hr />
+
+
+@*<div>
+    <h5>Peliculas</h5>
+    @for (int x = 0; x < movies.Count; x++)
+    {
+        <p> @(x + 1) ) Titulo <b>@movies[x].title</b> </p>
+        <p>Fecha de lanzamiento: <b>@movies[x].release_date.ToString("dd MMM yyyy")</b> </p>
+    }
+</div>*@
+
+
+@code {
+    
+
+    int counter = 0;
+    Movie bestMovie { get { return getMovie(); } }
+    List<Movie>? movies { set; get; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(1000);
+        movies = getMovies();
+        //movies = new List<Movie>();
+    }
+
+    Movie getMovie()
+    {
+        return new Movie()
+            {
+                title = "Wakanda Forever",
+                release_date = new DateTime(2023, 07, 11),
+            };
+    }
+
+    List<Movie> getMovies()
+    {
+        return new List<Movie>()
+        {
+            new Movie{title = "Harry Potter y el calis de fuego", release_date = new DateTime(2005,10,10)},
+            new Movie{title = "El demonio 2", release_date = new DateTime(2005,10,10)},
+            new Movie{title = "Los Vengadores End Game", release_date = new DateTime(2023,07,11)}
+
+        };
+
+    }
+
+    void increment() => counter++;
+
+}
