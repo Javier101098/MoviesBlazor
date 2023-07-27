@@ -12,39 +12,15 @@
     {
         @foreach (Movie movie in movies)
         {
-            <p>
-                Titulo
-                <b>@movie.title</b>
-                @if (DateTime.Today.Subtract(movie.release_date).Days <= 14)
-                {
-                    <small class="bg-primary text-white">
-                        Nuevo
-                    </small>
-                }
-            </p>
-            <p>Fecha de lanzamiento: <b>@movie.release_date.ToString("dd MMM yyyy")</b> </p>
+            <MovieIndividual movie="movie"/>
         }
     }
 
 </div>
 
 @code {
-    List<Movie>? movies { set; get; }
+    
+    [Parameter]
+    public List<Movie>? movies { set; get; }
 
-    protected override async Task OnInitializedAsync()
-    {
-        await Task.Delay(1000);
-        movies = getMovies();
-    }
-
-    List<Movie> getMovies()
-    {
-        return new List<Movie>()
-        {
-            new Movie{title = "Harry Potter y el calis de fuego", release_date = new DateTime(2005,10,10)},
-            new Movie{title = "El demonio 2", release_date = new DateTime(2005,10,10)},
-            new Movie{title = "Los Vengadores End Game", release_date = new DateTime(2023,07,11)}
-        };
-
-    }
 }

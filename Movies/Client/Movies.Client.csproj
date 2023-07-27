@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Shared\Movies.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Shared\Movies\" />
-  </ItemGroup>
-
 </Project>

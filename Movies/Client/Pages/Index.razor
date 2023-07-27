@@ -7,10 +7,20 @@
     <h4>@Utilities.transformLowerCase(slogan)</h4>
 </div>
 
-<List />
-
+<List movies="getMovies()" />
 @code {
     string name = "Cuevana";
     string slogan = "Imagina, Vive, Recuerda";
     string transform(string name) => name.ToUpperInvariant();
+
+    List<Movie> getMovies()
+    {
+        return new List<Movie>()
+        {
+            new Movie{title = "Harry Potter y el calis de fuego", release_date = new DateTime(2005,10,10)},
+            new Movie{title = "El demonio 2", release_date = new DateTime(2005,10,10)},
+            new Movie{title = "Los Vengadores End Game", release_date = new DateTime(2023,07,11)}
+        };
+
+    }
 }
