@@ -9,8 +9,17 @@
     }
 </p>
 <p>Fecha de lanzamiento: <b>@movie.release_date.ToString("dd MMM yyyy")</b> </p>
+
+@if (showButtons)
+{
+    <button>Eliminar la pelicula</button>
+}
+
 @code {
     [Parameter]
     [EditorRequired]
     public Movie? movie { get; set; }
+
+    [Parameter]
+    public bool showButtons { set; get; } = false;
 }

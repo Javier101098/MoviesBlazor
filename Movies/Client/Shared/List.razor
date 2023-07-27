@@ -10,18 +10,22 @@
     }
     else
     {
+        @*<input type="checkbox" @onclick="@( () => showButtons = !showButtons)">*@
+        <input type="checkbox" @bind="showButtons">
+
+        <span>Mostrar Botones</span>
         @foreach (Movie movie in movies)
         {
-            <MovieIndividual movie="movie"/>
+            <MovieIndividual movie="movie" showButtons="showButtons" />
         }
     }
 
 </div>
 
 @code {
-    
+
     [Parameter]
     [EditorRequired]
     public List<Movie>? movies { set; get; }
-
+    bool showButtons = true;
 }
