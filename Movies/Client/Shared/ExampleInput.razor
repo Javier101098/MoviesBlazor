@@ -1,0 +1,8 @@
+﻿<input @attributes="attributesInput" />
+
+@code {
+
+	[Parameter(CaptureUnmatchedValues = true)]
+	public IDictionary<string, object>? attributesInput { set; get; }
+
+}

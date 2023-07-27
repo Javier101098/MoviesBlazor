@@ -8,10 +8,25 @@
 </div>
 
 <List movies="getMovies()" />
+
+
+<div class="text-center">
+    @*<ExampleInput placeholder ="Este es mi parametro arbitrario" class="form-control" />*@
+@*    <ExampleInput @attributes="@( new Dictionary<string,object>(){
+                                {"placeholder","Hola mundo"}
+                            })" />*@
+    <ExampleInput @attributes="exampleInputs"></ExampleInput>
+</div>
+
 @code {
     string name = "Cuevana";
     string slogan = "Imagina, Vive, Recuerda";
     string transform(string name) => name.ToUpperInvariant();
+    private Dictionary<string, object> exampleInputs = new Dictionary<string, object>()
+    {
+        {"Placeholder" , "Holamundo desde mi casa"}
+    };
+
 
     List<Movie> getMovies()
     {
