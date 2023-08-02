@@ -2,11 +2,25 @@
     <h5>Peliculas</h5>
     @if (movies is null)
     {
-        <p>Cargando las peliculas</p>
+        if (chargingMovies is null)
+        {
+            <p>Cargando el catalo de peliculas, espere un momento </p>
+        }
+        else
+        {
+            @chargingMovies
+        }
     }
     else if (movies.Count == 0)
     {
-        <p>No hay peliculas para mostrar</p>
+        if (noMovies is null)
+        {
+            <p>No hay peliculas en este momento</p>
+        }
+        else
+        {
+            @noMovies
+        }
     }
     else
     {
@@ -16,7 +30,7 @@
         <span>Mostrar Botones</span>
         @foreach (Movie movie in movies)
         {
-            <MovieIndividual movie="movie" showButtons="showButtons" />
+            <MovieIndividual movie="movie" showButtons="showButtons" DeletedMovieCallback="DeletedMovie" />
         }
     }
 
@@ -27,5 +41,16 @@
     [Parameter]
     [EditorRequired]
     public List<Movie>? movies { set; get; }
+    [Parameter]
+    public RenderFragment chargingMovies { set; get; } // Esto hace que pueda enviar html o contenido a este componente y  childContent se utiliza cuando solo es un contenido o solo un render fragment
+    [Parameter]
+    public RenderFragment noMovies { set; get; } // Esto hace que pueda enviar html o contenido a este componente y es childContent
+
+
     bool showButtons = true;
+
+    private void DeletedMovie(Movie movie)
+    {
+        movies!.Remove(movie);
+    }
 }

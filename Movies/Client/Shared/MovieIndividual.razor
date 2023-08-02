@@ -12,14 +12,15 @@
 
 @if (showButtons)
 {
-    <button>Eliminar la pelicula</button>
+    <button @onclick="@( ()=> DeletedMovieCallback.InvokeAsync(movie))">Eliminar la pelicula</button>
 }
 
 @code {
     [Parameter]
     [EditorRequired]
     public Movie? movie { get; set; }
-
     [Parameter]
     public bool showButtons { set; get; } = false;
+    [Parameter]
+    public EventCallback<Movie> DeletedMovieCallback { set; get; }
 }

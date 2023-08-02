@@ -7,16 +7,30 @@
     <h4>@Utilities.transformLowerCase(slogan)</h4>
 </div>
 
-<List movies="getMovies()" />
+<List movies="getMovies()">
+    <chargingMovies>
+
+        <p>Cargando Peliculas, espere un momento no sea impaciente, vengo de mi padre</p>
+    </chargingMovies>
+
+    <noMovies>
+        <p>No hay peliculas, vengo de mi padre</p>
+    </noMovies>
+
+</List>
 
 
-<div class="text-center">
-    @*<ExampleInput placeholder ="Este es mi parametro arbitrario" class="form-control" />*@
-@*    <ExampleInput @attributes="@( new Dictionary<string,object>(){
+@*<div class="text-center">
+    <ExampleInput placeholder ="Este es mi parametro arbitrario" class="form-control" />
+    <ExampleInput @attributes="@( new Dictionary<string,object>(){
                                 {"placeholder","Hola mundo"}
-                            })" />*@
+                            })" />
     <ExampleInput @attributes="exampleInputs"></ExampleInput>
 </div>
+
+<BindEvent />
+<BindGetSetDemo />
+<BindAfterDemos/>*@
 
 @code {
     string name = "Cuevana";

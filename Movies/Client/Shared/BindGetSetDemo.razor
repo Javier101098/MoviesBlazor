@@ -1,0 +1,21 @@
+﻿
+<h3>BindGetSetDemo</h3>
+
+@*<input type="text" @bind:get="text" @bind:set="SetAsync" />   No se puede ser soportado por una version menor de razor *@
+<input  type="text" @bind="text" @bind:event="oninput"/>
+
+<p>
+	Text: @text.ToUpper();
+</p>
+
+
+@code {
+	private string? text = String.Empty;
+
+	private Task SetAsync(string valor)
+	{
+		text = valor.ToUpper();
+		return Task.CompletedTask;
+	}
+
+}
